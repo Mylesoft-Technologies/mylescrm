@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { getSignedInUser } from "@workos-inc/authkit-nextjs";
+import { getSession } from "@workos-inc/authkit-nextjs";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2024-12-18.acacia" });
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2025-02-24.acacia" });
 
 const PRICE_MAP: Record<string, Record<string, string>> = {
   starter: {
@@ -21,14 +21,15 @@ const PRICE_MAP: Record<string, Record<string, string>> = {
 
 export async function POST(req: NextRequest) {
   try {
-    const { user } = await getSignedInUser();
+    const authSession = await getSession();
+  const user = authSession?.user;
     if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const { plan, billing, orgId, stripeCustomerId } = await req.json();
     const priceId = PRICE_MAP[plan]?.[billing];
     if (!priceId) return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
 
-    const session = await stripe.checkout.sessions.create({
+    const stripeSession = await stripe.checkout.sessions.create({
       mode: "subscription",
       payment_method_types: ["card"],
       customer: stripeCustomerId ?? undefined,
@@ -44,7 +45,7 @@ export async function POST(req: NextRequest) {
       allow_promotion_codes: true,
     });
 
-    return NextResponse.json({ url: session.url });
+    return NextResponse.json({ url: stripeSession.url });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }

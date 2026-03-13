@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { getSignedInUser } from "@workos-inc/authkit-nextjs";
+import { getSession } from "@workos-inc/authkit-nextjs";
 import { ConvexHttpClient } from "convex/browser";
 import { api } from "@/convex/_generated/api";
 
@@ -9,7 +9,8 @@ const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
 export async function POST(req: NextRequest) {
   try {
-    const { user } = await getSignedInUser();
+    const session = await getSession();
+  const user = session?.user;
     if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const { to, cc, bcc, subject, body, contactId, dealId, orgId, userId, templateId, scheduledAt } = await req.json();

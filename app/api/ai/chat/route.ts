@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSignedInUser } from "@workos-inc/authkit-nextjs";
+import { getSession } from "@workos-inc/authkit-nextjs";
 
 export async function POST(req: NextRequest) {
   try {
-    const { user } = await getSignedInUser();
+    const session = await getSession();
+    const user = session?.user;
     if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const { messages, model, systemPrompt, stream = false } = await req.json();
