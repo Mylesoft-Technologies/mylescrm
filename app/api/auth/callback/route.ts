@@ -75,4 +75,24 @@ export async function GET(req: NextRequest) {
     // Set session cookie
     const sessionToken = Buffer.from(
       JSON.stringify({ workosUserId: user.id, email: user.email })
-    ).
+    ).toString("base64");
+
+    const response = NextResponse.redirect(
+      `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/dashboard`
+    );
+    
+    response.cookies.set("auth-token", sessionToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+    });
+
+    return response;
+  } catch (error: any) {
+    console.error("Auth callback error:", error);
+    return NextResponse.redirect(
+      `${process.env.NEXT_PUBLIC_APP_URL}/auth/login?error=server_error`
+    );
+  }
+}

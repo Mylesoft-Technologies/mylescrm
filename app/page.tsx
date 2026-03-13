@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation";
-import { getSignedInUser } from "@workos-inc/authkit-nextjs";
+import { getSession } from "@workos-inc/authkit-nextjs";
 import Link from "next/link";
 import { Zap, ArrowRight, Check, Bot, TrendingUp, Users, GitBranch, BarChart3 } from "lucide-react";
 
 export default async function HomePage() {
-  const { user } = await getSignedInUser();
+  const { user } = await getSession();
   if (user) redirect("/dashboard/dashboard");
 
   return (

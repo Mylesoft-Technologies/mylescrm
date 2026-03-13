@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation";
-import { getSignInUrl, getSignedInUser } from "@workos-inc/authkit-nextjs";
+import { getSignInUrl, getSession } from "@workos-inc/authkit-nextjs";
 import Link from "next/link";
 import { Zap, ArrowRight } from "lucide-react";
 
 export default async function LoginPage() {
-  const { user } = await getSignedInUser();
+  const { user } = await getSession();
   if (user) redirect("/dashboard/dashboard");
 
   const signInUrl = await getSignInUrl();
