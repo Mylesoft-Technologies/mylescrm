@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700&display=swap');
+
+@layer base {
+  :root {
+    /* ── Light Theme ── */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 173 80% 40%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
+    --radius: 0.625rem;
+
+    /* Brand-specific */
+    --sidebar-bg: 222 47% 11%;
+    --sidebar-fg: 210 40% 92%;
+    --sidebar-muted: 215 16% 57%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-active: 221 83% 53%;
+    --sidebar-active-bg: 221 83% 53% / 0.15;
+
+    /* Font */
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'DM Mono', monospace;
+    --font-display: 'Playfair Display', Georgia, serif;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 221 83% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 173 80% 45%;
+    --accent-foreground: 222 47% 6%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 221 83% 60%;
+
+    --sidebar-bg: 222 47% 5%;
+    --sidebar-fg: 210 40% 92%;
+    --sidebar-muted: 215 16% 47%;
+    --sidebar-border: 217 33% 12%;
+    --sidebar-active: 221 83% 60%;
+    --sidebar-active-bg: 221 83% 53% / 0.12;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* ── Sidebar ── */
+  .mylescrm-sidebar {
+    background: hsl(var(--sidebar-bg));
+    border-right: 1px solid hsl(var(--sidebar-border));
+  }
+
+  .mylescrm-sidebar-item {
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150;
+    color: hsl(var(--sidebar-muted));
+  }
+
+  .mylescrm-sidebar-item:hover {
+    color: hsl(var(--sidebar-fg));
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .mylescrm-sidebar-item.active {
+    color: hsl(var(--sidebar-fg));
+    background: hsl(var(--sidebar-active-bg));
+    border-left: 2px solid hsl(var(--sidebar-active));
+  }
+
+  /* ── Stats Card ── */
+  .stat-card {
+    @apply rounded-xl border bg-card p-5 shadow-sm transition-shadow hover:shadow-md;
+  }
+
+  .stat-card-icon {
+    @apply flex h-10 w-10 items-center justify-center rounded-lg;
+  }
+
+  /* ── Deal Card (Kanban) ── */
+  .deal-card {
+    @apply rounded-lg border bg-card p-3 shadow-sm cursor-grab active:cursor-grabbing;
+    @apply hover:shadow-md transition-all duration-150;
+  }
+
+  .deal-card:hover {
+    transform: translateY(-1px);
+  }
+
+  /* ── Lead Score Badge ── */
+  .score-badge-A { @apply bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400; }
+  .score-badge-B { @apply bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400; }
+  .score-badge-C { @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400; }
+  .score-badge-D { @apply bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400; }
+  .score-badge-F { @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400; }
+
+  /* ── Loading Shimmer ── */
+  .shimmer {
+    background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--muted) / 0.5) 50%, hsl(var(--muted)) 75%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  /* ── AI Chat ── */
+  .ai-message-user {
+    @apply rounded-2xl rounded-tr-sm bg-primary text-primary-foreground px-4 py-2.5 max-w-[75%] ml-auto;
+  }
+
+  .ai-message-assistant {
+    @apply rounded-2xl rounded-tl-sm border bg-card px-4 py-2.5 max-w-[85%];
+  }
+
+  /* ── Priority Colors ── */
+  .priority-urgent { @apply text-red-600 dark:text-red-400; }
+  .priority-high { @apply text-orange-500 dark:text-orange-400; }
+  .priority-medium { @apply text-yellow-500 dark:text-yellow-400; }
+  .priority-low { @apply text-slate-400 dark:text-slate-500; }
+
+  /* ── Invoice Status ── */
+  .status-draft { @apply bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300; }
+  .status-sent { @apply bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400; }
+  .status-paid { @apply bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400; }
+  .status-overdue { @apply bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400; }
+  .status-partial { @apply bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400; }
+}
+
+@layer utilities {
+  .scrollbar-hidden {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-hidden::-webkit-scrollbar { display: none; }
+
+  .text-balance { text-wrap: balance; }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .dark .glass {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.5); }
