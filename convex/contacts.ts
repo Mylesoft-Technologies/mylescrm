@@ -119,6 +119,8 @@ export const create = mutation({
     source: v.optional(v.string()),
     tags: v.optional(v.array(v.string())),
     notes: v.optional(v.string()),
+    leadScore: v.optional(v.number()),
+    leadScoreFactors: v.optional(v.any()),
     address: v.optional(v.any()),
     social: v.optional(v.any()),
     customFields: v.optional(v.any()),
@@ -197,6 +199,8 @@ export const update = mutation({
     source: v.optional(v.string()),
     tags: v.optional(v.array(v.string())),
     notes: v.optional(v.string()),
+    leadScore: v.optional(v.number()),
+    leadScoreFactors: v.optional(v.any()),
     address: v.optional(v.any()),
     social: v.optional(v.any()),
     customFields: v.optional(v.any()),
@@ -205,7 +209,7 @@ export const update = mutation({
     const existing = await ctx.db.get(contactId);
     if (!existing) throw new Error("Contact not found");
 
-    await ctx.db.patch(contactId, { ...updates, updatedAt: Date.now() });
+    await ctx.db.patch(contactId, { ...updates, updatedAt: Date.now() } as any);
     return contactId;
   },
 });

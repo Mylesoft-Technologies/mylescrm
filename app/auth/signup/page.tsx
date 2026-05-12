@@ -26,7 +26,7 @@ export default function SignupPage() {
     setLoading(true);
     // In production: create org via Convex, then redirect to WorkOS auth
     setTimeout(() => {
-      router.push("/api/auth/login?returnTo=/dashboard/dashboard");
+      router.push("/auth/login");
     }, 800);
   };
 
@@ -134,7 +134,7 @@ export default function SignupPage() {
 
         <p className="mt-6 text-center text-sm text-white/40">
           Already have an account?{" "}
-          <Link href="/login" className="text-primary hover:underline">Sign in</Link>
+          <Link href="/auth/login" className="text-primary hover:underline">Sign in</Link>
         </p>
       </div>
     </div>

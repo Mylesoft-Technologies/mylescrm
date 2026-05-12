@@ -2,8 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { WorkOS } from "@workos-inc/node";
 import { ConvexHttpClient } from "convex/browser";
 import { api } from "@/convex/_generated/api";
-import { cookies } from "next/headers";
-import { sign } from "jsonwebtoken";
+import { saveSession } from "@workos-inc/authkit-nextjs";
 
 const workos = new WorkOS(process.env.WORKOS_API_KEY!);
 const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
@@ -26,14 +25,15 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const { user, organizationId } =
+    const authResponse =
       await workos.userManagement.authenticateWithCode({
         code,
         clientId: process.env.WORKOS_CLIENT_ID!,
       });
+    const { user, organizationId } = authResponse;
 
     // Find or create user in Convex
-    let dbUser = await convex.query(api.organizations.getUser, {
+    const dbUser = await convex.query(api.organizations.getUser, {
       workosUserId: user.id,
     });
 
@@ -72,22 +72,11 @@ export async function GET(req: NextRequest) {
       });
     }
 
-    // Set session cookie
-    const sessionToken = Buffer.from(
-      JSON.stringify({ workosUserId: user.id, email: user.email })
-    ).toString("base64");
+    await saveSession(authResponse, req);
 
     const response = NextResponse.redirect(
       `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/dashboard`
     );
-    
-    response.cookies.set("auth-token", sessionToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: 60 * 60 * 24 * 7, // 7 days
-    });
-
     return response;
   } catch (error: any) {
     console.error("Auth callback error:", error);

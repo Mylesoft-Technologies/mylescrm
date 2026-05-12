@@ -182,6 +182,16 @@ export const recordPayment = mutation({
   },
 });
 
+export const getInvoiceByMpesaCheckout = query({
+  args: { checkoutRequestId: v.string() },
+  handler: async (ctx, { checkoutRequestId }) => {
+    return ctx.db
+      .query("invoices")
+      .filter((q) => q.eq(q.field("mpesaCheckoutRequestId"), checkoutRequestId))
+      .first();
+  },
+});
+
 // ── M-Pesa STK Push ────────────────────────────────────────
 
 export const initiateMpesaPayment = action({

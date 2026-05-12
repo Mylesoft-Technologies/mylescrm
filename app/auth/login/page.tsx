@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation";
-import { getSignInUrl, getSession } from "@workos-inc/authkit-nextjs";
+import { getSignInUrl, withAuth } from "@workos-inc/authkit-nextjs";
 import Link from "next/link";
 import { Zap, ArrowRight } from "lucide-react";
 
 export default async function LoginPage() {
-  const { user } = await getSession();
+  const { user } = await withAuth();
   if (user) redirect("/dashboard/dashboard");
 
   const signInUrl = await getSignInUrl();
@@ -43,7 +43,7 @@ export default async function LoginPage() {
 
         <p className="mt-6 text-center text-sm text-white/40">
           No account?{" "}
-          <Link href="/signup" className="text-primary hover:underline">
+          <Link href="/auth/signup" className="text-primary hover:underline">
             Start your free trial
           </Link>
         </p>

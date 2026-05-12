@@ -89,6 +89,85 @@ export const updatePlan = mutation({
   },
 });
 
+export const logWebhookHttp = mutation({
+  args: {
+    orgId: v.optional(v.id("organizations")),
+    provider: v.string(),
+    event: v.string(),
+    payload: v.any(),
+    status: v.union(v.literal("processed"), v.literal("failed"), v.literal("ignored")),
+    error: v.optional(v.string()),
+    receivedAt: v.optional(v.number()),
+  },
+  handler: async (ctx, args) => {
+    return ctx.db.insert("webhook_logs", {
+      orgId: args.orgId,
+      provider: args.provider,
+      event: args.event,
+      payload: args.payload,
+      status: args.status,
+      error: args.error,
+      receivedAt: args.receivedAt ?? Date.now(),
+    });
+  },
+});
+
+export const upsertStripeSubscription = mutation({
+  args: {
+    orgId: v.id("organizations"),
+    stripeSubscriptionId: v.string(),
+    stripeCustomerId: v.string(),
+    stripePriceId: v.string(),
+    plan: v.string(),
+    status: v.string(),
+    currentPeriodStart: v.number(),
+    currentPeriodEnd: v.number(),
+    cancelAtPeriodEnd: v.boolean(),
+    canceledAt: v.optional(v.number()),
+    maxUsers: v.number(),
+    maxContacts: v.number(),
+    features: v.array(v.string()),
+  },
+  handler: async (ctx, args) => {
+    const now = Date.now();
+    const existing = await ctx.db
+      .query("subscriptions")
+      .withIndex("by_stripe_sub", (q) => q.eq("stripeSubscriptionId", args.stripeSubscriptionId))
+      .first();
+
+    const subscription = {
+      orgId: args.orgId,
+      stripeSubscriptionId: args.stripeSubscriptionId,
+      stripeCustomerId: args.stripeCustomerId,
+      stripePriceId: args.stripePriceId,
+      plan: args.plan,
+      status: args.status,
+      currentPeriodStart: args.currentPeriodStart,
+      currentPeriodEnd: args.currentPeriodEnd,
+      cancelAtPeriodEnd: args.cancelAtPeriodEnd,
+      canceledAt: args.canceledAt,
+      updatedAt: now,
+    };
+
+    if (existing) {
+      await ctx.db.patch(existing._id, subscription);
+    } else {
+      await ctx.db.insert("subscriptions", { ...subscription, createdAt: now });
+    }
+
+    await ctx.db.patch(args.orgId, {
+      plan: args.plan as any,
+      planStatus: args.status as any,
+      stripeCustomerId: args.stripeCustomerId,
+      stripeSubscriptionId: args.stripeSubscriptionId,
+      maxUsers: args.maxUsers,
+      maxContacts: args.maxContacts,
+      features: args.features,
+      updatedAt: now,
+    } as any);
+  },
+});
+
 // ── Users ──────────────────────────────────────────────────
 
 export const getUser = query({

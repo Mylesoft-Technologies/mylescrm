@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { getSession } from "@workos-inc/authkit-nextjs";
+import { withAuth } from "@workos-inc/authkit-nextjs";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2025-02-24.acacia" });
 
@@ -21,8 +21,7 @@ const PRICE_MAP: Record<string, Record<string, string>> = {
 
 export async function POST(req: NextRequest) {
   try {
-    const authSession = await getSession();
-  const user = authSession?.user;
+    const { user } = await withAuth();
     if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const { plan, billing, orgId, stripeCustomerId } = await req.json();

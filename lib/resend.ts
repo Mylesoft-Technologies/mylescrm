@@ -22,8 +22,8 @@ export async function sendEmail(options: SendEmailOptions) {
     html: options.html,
     cc: options.cc,
     bcc: options.bcc,
-    reply_to: options.replyTo,
-    scheduled_at: options.scheduledAt,
+    replyTo: options.replyTo,
+    scheduledAt: options.scheduledAt,
     tags: options.tags,
   });
 

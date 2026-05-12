@@ -275,7 +275,7 @@ Return ONLY valid JSON (no markdown):
 
 // ── Revenue Forecasting ────────────────────────────────────
 
-export const forecastRevenue = action({
+export const forecastRevenue: any = action({
   args: {
     orgId: v.id("organizations"),
     months: v.optional(v.number()),

@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation";
-import { getSession } from "@workos-inc/authkit-nextjs";
+import { withAuth } from "@workos-inc/authkit-nextjs";
 import Link from "next/link";
 import { Zap, ArrowRight, Check, Bot, TrendingUp, Users, GitBranch, BarChart3 } from "lucide-react";
 
 export default async function HomePage() {
-  const { user } = await getSession();
+  const { user } = await withAuth();
   if (user) redirect("/dashboard/dashboard");
 
   return (
@@ -18,10 +18,10 @@ export default async function HomePage() {
           <span className="text-lg font-semibold">MylesCRM</span>
         </div>
         <div className="flex items-center gap-3">
-          <Link href="/login" className="text-sm text-white/60 hover:text-white transition-colors px-4 py-2">
+          <Link href="/auth/login" className="text-sm text-white/60 hover:text-white transition-colors px-4 py-2">
             Sign in
           </Link>
-          <Link href="/signup" className="rounded-lg bg-primary px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors">
+          <Link href="/auth/signup" className="rounded-lg bg-primary px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors">
             Start free trial
           </Link>
         </div>
@@ -43,10 +43,10 @@ export default async function HomePage() {
           MylesCRM combines intelligent lead scoring, AI email drafting, predictive forecasting, and a beautiful pipeline — all in one platform built for global teams.
         </p>
         <div className="flex items-center justify-center gap-4">
-          <Link href="/signup" className="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-semibold hover:bg-primary/90 transition-all hover:scale-105">
+          <Link href="/auth/signup" className="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-semibold hover:bg-primary/90 transition-all hover:scale-105">
             Start 14-day free trial <ArrowRight className="h-4 w-4" />
           </Link>
-          <Link href="/login" className="rounded-xl border border-white/10 px-6 py-3 font-semibold text-white/80 hover:bg-white/5 transition-colors">
+          <Link href="/auth/login" className="rounded-xl border border-white/10 px-6 py-3 font-semibold text-white/80 hover:bg-white/5 transition-colors">
             Sign in
           </Link>
         </div>
@@ -96,7 +96,7 @@ export default async function HomePage() {
                   </li>
                 ))}
               </ul>
-              <Link href="/signup" className={`block w-full rounded-lg py-2.5 text-center text-sm font-semibold transition-colors ${p.highlight ? "bg-primary hover:bg-primary/90" : "border border-white/10 hover:bg-white/5"}`}>
+              <Link href="/auth/signup" className={`block w-full rounded-lg py-2.5 text-center text-sm font-semibold transition-colors ${p.highlight ? "bg-primary hover:bg-primary/90" : "border border-white/10 hover:bg-white/5"}`}>
                 {p.cta}
               </Link>
             </div>
