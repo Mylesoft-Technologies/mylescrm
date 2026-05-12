@@ -1,10 +1,7 @@
-import { getSignInUrl } from "@workos-inc/authkit-nextjs";
 import Link from "next/link";
 import { Zap, ArrowRight } from "lucide-react";
 
 export default async function LoginPage() {
-  const signInUrl = await getSignInUrl();
-
   return (
     <div className="flex min-h-screen items-center justify-center bg-[hsl(222,47%,6%)]">
       <div className="w-full max-w-sm px-6">
@@ -20,7 +17,7 @@ export default async function LoginPage() {
         {/* Auth card */}
         <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
           <a
-            href={signInUrl}
+            href="/api/auth/login"
             className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3 text-sm font-semibold text-white hover:bg-primary/90 transition-all hover:scale-[1.01]"
           >
             Continue with WorkOS <ArrowRight className="h-4 w-4" />

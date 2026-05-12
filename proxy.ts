@@ -7,6 +7,7 @@ export default authkitProxy({
       "/",
       "/auth/login",
       "/auth/signup",
+      "/api/auth/login",
       "/api/auth/callback",
       "/api/webhooks/(.*)",
     ],
