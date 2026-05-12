@@ -1,12 +1,7 @@
-import { redirect } from "next/navigation";
-import { withAuth } from "@workos-inc/authkit-nextjs";
 import Link from "next/link";
 import { Zap, ArrowRight, Check, Bot, TrendingUp, Users, GitBranch, BarChart3 } from "lucide-react";
 
 export default async function HomePage() {
-  const { user } = await withAuth();
-  if (user) redirect("/dashboard/dashboard");
-
   return (
     <div className="min-h-screen bg-[hsl(222,47%,6%)] text-white">
       {/* Nav */}
