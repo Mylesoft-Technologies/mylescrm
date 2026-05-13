@@ -3,7 +3,7 @@
 import { useState, useCallback } from "react";
 import {
   Plus, MoreHorizontal, Building2, User, Calendar,
-  DollarSign, ArrowRight, Zap, Filter, ChevronDown, Search
+  ArrowRight, Zap, Filter, ChevronDown
 } from "lucide-react";
 
 const STAGES = [
@@ -15,15 +15,15 @@ const STAGES = [
 ];
 
 const MOCK_DEALS = [
-  { id: "d1", stageId: "lead", title: "EduTech Africa SaaS", company: "EduTech Africa", contact: "James Mwangi", value: 18000, currency: "USD", probability: 10, priority: "high", daysInStage: 2, expectedClose: "Apr 15", aiScore: 72 },
-  { id: "d2", stageId: "lead", title: "Nairobi Realty Platform", company: "Realty KE", contact: "Amara Osei", value: 9600, currency: "USD", probability: 10, priority: "medium", daysInStage: 5, expectedClose: "Apr 30", aiScore: 45 },
-  { id: "d3", stageId: "qualified", title: "Safari Logistics - Pro", company: "Safari Logistics", contact: "Priya Nair", value: 24000, currency: "USD", probability: 25, priority: "high", daysInStage: 3, expectedClose: "Mar 30", aiScore: 81 },
-  { id: "d4", stageId: "qualified", title: "FinTech Africa Integration", company: "FinTech Africa", contact: "David Ochieng", value: 36000, currency: "USD", probability: 30, priority: "urgent", daysInStage: 1, expectedClose: "Apr 5", aiScore: 68 },
-  { id: "d5", stageId: "proposal", title: "TechStartup UAE Growth", company: "TechStartup UAE", contact: "Omar Hassan", value: 12000, currency: "USD", probability: 50, priority: "high", daysInStage: 7, expectedClose: "Mar 25", aiScore: 88 },
-  { id: "d6", stageId: "proposal", title: "Global Retail SG — E-comm", company: "Global Retail SG", contact: "Mei Zhang", value: 48000, currency: "USD", probability: 55, priority: "high", daysInStage: 4, expectedClose: "Apr 8", aiScore: 77 },
-  { id: "d7", stageId: "negotiation", title: "Acme Corp Enterprise Plan", company: "Acme Corp", contact: "Sofia Rodrigues", value: 96000, currency: "USD", probability: 75, priority: "urgent", daysInStage: 9, expectedClose: "Mar 20", aiScore: 91 },
-  { id: "d8", stageId: "negotiation", title: "Retail Hub KE — Starter", company: "Retail Hub Kenya", contact: "Kemi Adeyemi", value: 3600, currency: "USD", probability: 80, priority: "medium", daysInStage: 2, expectedClose: "Mar 18", aiScore: 84 },
-  { id: "d9", stageId: "won", title: "TechCorp Kenya — Enterprise", company: "TechCorp Kenya", contact: "James Kariuki", value: 72000, currency: "USD", probability: 100, priority: "high", daysInStage: 0, expectedClose: "Mar 10", aiScore: 99 },
+  { id: "d1", stageId: "lead", title: "EduTech Africa SaaS", company: "EduTech Africa", contact: "James Mwangi", value: 18000, currency: "KES", probability: 10, priority: "high", daysInStage: 2, expectedClose: "Apr 15", aiScore: 72 },
+  { id: "d2", stageId: "lead", title: "Nairobi Realty Platform", company: "Realty KE", contact: "Amara Osei", value: 9600, currency: "KES", probability: 10, priority: "medium", daysInStage: 5, expectedClose: "Apr 30", aiScore: 45 },
+  { id: "d3", stageId: "qualified", title: "Safari Logistics - Pro", company: "Safari Logistics", contact: "Priya Nair", value: 24000, currency: "KES", probability: 25, priority: "high", daysInStage: 3, expectedClose: "Mar 30", aiScore: 81 },
+  { id: "d4", stageId: "qualified", title: "FinTech Africa Integration", company: "FinTech Africa", contact: "David Ochieng", value: 36000, currency: "KES", probability: 30, priority: "urgent", daysInStage: 1, expectedClose: "Apr 5", aiScore: 68 },
+  { id: "d5", stageId: "proposal", title: "TechStartup UAE Growth", company: "TechStartup UAE", contact: "Omar Hassan", value: 12000, currency: "KES", probability: 50, priority: "high", daysInStage: 7, expectedClose: "Mar 25", aiScore: 88 },
+  { id: "d6", stageId: "proposal", title: "Global Retail SG — E-comm", company: "Global Retail SG", contact: "Mei Zhang", value: 48000, currency: "KES", probability: 55, priority: "high", daysInStage: 4, expectedClose: "Apr 8", aiScore: 77 },
+  { id: "d7", stageId: "negotiation", title: "Acme Corp Enterprise Plan", company: "Acme Corp", contact: "Sofia Rodrigues", value: 96000, currency: "KES", probability: 75, priority: "urgent", daysInStage: 9, expectedClose: "Mar 20", aiScore: 91 },
+  { id: "d8", stageId: "negotiation", title: "Retail Hub KE — Starter", company: "Retail Hub Kenya", contact: "Kemi Adeyemi", value: 3600, currency: "KES", probability: 80, priority: "medium", daysInStage: 2, expectedClose: "Mar 18", aiScore: 84 },
+  { id: "d9", stageId: "won", title: "TechCorp Kenya — Enterprise", company: "TechCorp Kenya", contact: "James Kariuki", value: 72000, currency: "KES", probability: 100, priority: "high", daysInStage: 0, expectedClose: "Mar 10", aiScore: 99 },
 ];
 
 const PRIORITY_DOT: Record<string, string> = {
@@ -76,7 +76,7 @@ function DealCard({ deal, onDragStart }: { deal: Deal; onDragStart: (d: Deal) =>
       {/* Value & Close date */}
       <div className="flex items-center justify-between pt-2.5 border-t">
         <span className="font-semibold text-sm font-mono">
-          ${deal.value.toLocaleString()}
+          KSh {deal.value.toLocaleString()}
         </span>
         <div className="flex items-center gap-1 text-xs text-muted-foreground">
           <Calendar className="h-3 w-3" />
@@ -128,7 +128,7 @@ export default function PipelinePage() {
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Pipeline</h1>
           <p className="text-sm text-muted-foreground mt-0.5">
-            ${totalPipeline.toLocaleString()} in pipeline · ${totalWon.toLocaleString()} won
+            KSh {totalPipeline.toLocaleString()} in pipeline · KSh {totalWon.toLocaleString()} won
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -173,7 +173,7 @@ export default function PipelinePage() {
               </div>
               <div className="flex items-center gap-1">
                 <span className="text-xs text-muted-foreground font-mono">
-                  ${(stage.totalValue / 1000).toFixed(0)}k
+                  KSh {(stage.totalValue / 1000).toFixed(0)}k
                 </span>
                 <button className="rounded-md p-1 hover:bg-muted transition-colors">
                   <MoreHorizontal className="h-4 w-4 text-muted-foreground" />

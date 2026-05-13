@@ -12,7 +12,7 @@ export default defineSchema({
     industry: v.optional(v.string()),
     website: v.optional(v.string()),
     timezone: v.string(),
-    currency: v.string(),            // ISO 4217: KES, USD, GBP, EUR…
+    currency: v.string(),            // ISO 4217: KES / KSh
     locale: v.string(),
     plan: v.union(
       v.literal("free"),

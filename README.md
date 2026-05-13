@@ -42,7 +42,7 @@ MylesCRM is a powerful yet intuitive AI-powered customer relationship management
 - **Reporting & Analytics** — Sales performance dashboards and revenue forecasting
 - **M-Pesa Integration** — Accept payments directly within the CRM
 - **Mobile App** — Full-featured mobile CRM for field sales teams
-- **Multi-currency** — KES, USD, UGX, TZS, and more
+- **KSh-first currency** — KES billing, invoices, pipeline values, and reporting
 
 ---
 

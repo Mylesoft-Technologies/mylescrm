@@ -96,7 +96,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
           <span className="h-2 w-2 rounded-full" style={{ background: p.color }} />
           <span className="text-muted-foreground">{p.name}:</span>
           <span className="font-medium">{typeof p.value === "number" && p.value > 999
-            ? `$${(p.value / 1000).toFixed(0)}k`
+            ? `KSh ${(p.value / 1000).toFixed(0)}k`
             : p.value}
           </span>
         </div>
@@ -126,7 +126,7 @@ export default function DashboardPage() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
           title="Total Revenue"
-          value="$58,400"
+          value="KSh 58,400"
           subtitle="March 2026"
           icon={DollarSign}
           iconClass="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
@@ -136,7 +136,7 @@ export default function DashboardPage() {
         <StatCard
           title="Active Deals"
           value="61"
-          subtitle="$864,000 pipeline value"
+          subtitle="KSh 864,000 pipeline value"
           icon={TrendingUp}
           iconClass="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
           trend="up"
@@ -154,7 +154,7 @@ export default function DashboardPage() {
         <StatCard
           title="Win Rate"
           value="34.2%"
-          subtitle="Avg deal size $18,900"
+          subtitle="Avg deal size KSh 18,900"
           icon={Target}
           iconClass="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
           trend="up"
@@ -183,7 +183,7 @@ export default function DashboardPage() {
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
               <XAxis dataKey="month" tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }} axisLine={false} tickLine={false} tickFormatter={(v) => `$${v / 1000}k`} />
+              <YAxis tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }} axisLine={false} tickLine={false} tickFormatter={(v) => `KSh ${v / 1000}k`} />
               <Tooltip content={<CustomTooltip />} />
               <Area type="monotone" dataKey="revenue" name="Revenue" stroke="#3b6ef8" strokeWidth={2} fill="url(#revGrad)" />
               <Area type="monotone" dataKey="target" name="Target" stroke="#14b8a6" strokeWidth={1.5} strokeDasharray="4 3" fill="none" />
@@ -232,7 +232,7 @@ export default function DashboardPage() {
               <div key={stage.stage}>
                 <div className="flex items-center justify-between text-xs mb-1">
                   <span className="text-muted-foreground">{stage.stage}</span>
-                  <span className="font-medium">{stage.deals} deals · ${(stage.value / 1000).toFixed(0)}k</span>
+                  <span className="font-medium">{stage.deals} deals · KSh {(stage.value / 1000).toFixed(0)}k</span>
                 </div>
                 <div className="h-2 rounded-full bg-muted overflow-hidden">
                   <div
@@ -316,7 +316,7 @@ export default function DashboardPage() {
               {recentDeals.map((deal, i) => (
                 <tr key={i} className="hover:bg-muted/30 transition-colors cursor-pointer group">
                   <td className="px-5 py-3.5 font-medium group-hover:text-primary transition-colors">{deal.name}</td>
-                  <td className="px-4 py-3.5 font-mono text-sm">${deal.value.toLocaleString()}</td>
+                  <td className="px-4 py-3.5 font-mono text-sm">KSh {deal.value.toLocaleString()}</td>
                   <td className="px-4 py-3.5">
                     <span className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium bg-muted text-muted-foreground">
                       {deal.stage}

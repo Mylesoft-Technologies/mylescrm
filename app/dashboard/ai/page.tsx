@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import {
   Bot, Send, Sparkles, TrendingUp, Mail, Target,
-  User, BarChart3, Zap, ChevronRight, RefreshCw,
+  BarChart3, Zap, ChevronRight, RefreshCw,
   MessageSquare, Lightbulb, ArrowUpRight, Loader2
 } from "lucide-react";
 
@@ -29,7 +29,7 @@ const INITIAL_MESSAGES: Message[] = [
 ];
 
 const MOCK_RESPONSES: Record<string, string> = {
-  default: "I've analyzed your CRM data. Here's what I found:\n\n**Pipeline Summary:**\n- 9 open deals worth $247,200 total\n- 3 deals at 75%+ probability (high conversion likelihood)\n- 2 deals stagnant for 7+ days — action needed\n\n**Top recommendation:** Follow up with Omar Hassan at TechStartup UAE — the deal has been in Proposal Sent for 7 days with an 88% AI score. A quick call could close this week.",
+  default: "I've analyzed your CRM data. Here's what I found:\n\n**Pipeline Summary:**\n- 9 open deals worth KSh 247,200 total\n- 3 deals at 75%+ probability (high conversion likelihood)\n- 2 deals stagnant for 7+ days — action needed\n\n**Top recommendation:** Follow up with Omar Hassan at TechStartup UAE — the deal has been in Proposal Sent for 7 days with an 88% AI score. A quick call could close this week.",
   "which deals are at risk": "🚨 **At-Risk Deals (3 found):**\n\n1. **Nairobi Realty Platform** — 5 days in Lead stage, no activity logged. AI score: 45/100. *Action: Qualify or discard.*\n\n2. **EduTech Africa SaaS** — Expected close was Mar 15, now overdue by 2 days. *Action: Update expected close date and send check-in email.*\n\n3. **Global Retail SG** — Proposal sent 4 days ago, no response tracked. *Action: Send a polite follow-up today.*",
   "draft a follow-up": "Here's a follow-up email for the Safari Logistics deal:\n\n**Subject:** Following up — Safari Logistics × MylesCRM Pro\n\n---\n\nHi Priya,\n\nI hope your week is going well! I wanted to follow up on our conversation about the MylesCRM Pro plan for Safari Logistics.\n\nGiven your team's need to streamline procurement tracking across 3 depots, I believe our Pipeline + Invoicing module would save your team roughly 8 hours/week in manual reporting.\n\nI'd love to schedule a 20-minute call to walk through a quick demo tailored to your workflow. Are you available Thursday or Friday this week?\n\nLooking forward to it,\nMyles\n\n---\n*Want me to adjust the tone or add specific details?*",
 };
@@ -51,7 +51,7 @@ const SCORED_LEADS = [
 ];
 
 const FORECAST_DATA = {
-  summary: "Based on your current pipeline of $247,200 with 9 open deals, Q2 2026 revenue is projected at $48,000–$72,000 depending on deal velocity. Safari Logistics and TechStartup UAE are your two most likely near-term closures.",
+  summary: "Based on your current pipeline of KSh 247,200 with 9 open deals, Q2 2026 revenue is projected at KSh 48,000-KSh 72,000 depending on deal velocity. Safari Logistics and TechStartup UAE are your two most likely near-term closures.",
   months: [
     { month: "Apr 2026", pessimistic: 18000, realistic: 28000, optimistic: 42000 },
     { month: "May 2026", pessimistic: 22000, realistic: 35000, optimistic: 54000 },
@@ -435,7 +435,7 @@ export default function AIPage() {
                     <div key={scenario.label}>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="text-muted-foreground">{scenario.label}</span>
-                        <span className="font-mono font-medium">${scenario.value.toLocaleString()}</span>
+                        <span className="font-mono font-medium">KSh {scenario.value.toLocaleString()}</span>
                       </div>
                       <div className="h-1.5 rounded-full bg-muted overflow-hidden">
                         <div className={`h-full rounded-full ${scenario.color}`} style={{ width: `${(scenario.value / m.optimistic) * 100}%` }} />
@@ -455,7 +455,7 @@ export default function AIPage() {
                   <div key={i} className="rounded-lg border p-3">
                     <div className="flex items-center justify-between mb-1.5">
                       <span className="font-medium text-sm">{d.title}</span>
-                      <span className="text-sm font-mono text-primary">${d.value.toLocaleString()}</span>
+                      <span className="text-sm font-mono text-primary">KSh {d.value.toLocaleString()}</span>
                     </div>
                     <p className="text-xs text-muted-foreground">{d.action}</p>
                   </div>

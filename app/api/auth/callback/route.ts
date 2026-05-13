@@ -49,7 +49,7 @@ export async function GET(req: NextRequest) {
         name: `${user.firstName ?? ""} ${user.lastName ?? ""}`.trim() || user.email,
         slug,
         timezone: "Africa/Nairobi",
-        currency: "USD",
+        currency: "KES",
         locale: "en-US",
         workosOrgId: organizationId,
       });
@@ -68,7 +68,7 @@ export async function GET(req: NextRequest) {
       await convex.mutation(api.pipeline.seedDefaultPipeline, {
         orgId,
         createdBy: (await convex.query(api.organizations.getUser, { workosUserId: user.id }))!._id,
-        currency: "USD",
+        currency: "KES",
       });
     }
 

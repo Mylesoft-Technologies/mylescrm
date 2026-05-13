@@ -180,23 +180,10 @@ export const PRICING_PLANS: PricingPlan[] = [
 ];
 
 export const CURRENCIES = [
-  { code: "USD", symbol: "$", name: "US Dollar" },
-  { code: "EUR", symbol: "€", name: "Euro" },
-  { code: "GBP", symbol: "£", name: "British Pound" },
-  { code: "KES", symbol: "KSh", name: "Kenyan Shilling" },
-  { code: "UGX", symbol: "USh", name: "Ugandan Shilling" },
-  { code: "TZS", symbol: "TSh", name: "Tanzanian Shilling" },
-  { code: "NGN", symbol: "₦", name: "Nigerian Naira" },
-  { code: "ZAR", symbol: "R", name: "South African Rand" },
-  { code: "GHS", symbol: "₵", name: "Ghanaian Cedi" },
-  { code: "CAD", symbol: "CA$", name: "Canadian Dollar" },
-  { code: "AUD", symbol: "A$", name: "Australian Dollar" },
-  { code: "JPY", symbol: "¥", name: "Japanese Yen" },
-  { code: "INR", symbol: "₹", name: "Indian Rupee" },
-  { code: "AED", symbol: "د.إ", name: "UAE Dirham" },
+  { code: "KES", symbol: "KSh ", name: "Kenyan Shilling" },
 ];
 
-export function formatCurrency(amount: number, currency = "USD"): string {
+export function formatCurrency(amount: number, currency = "KES"): string {
   const curr = CURRENCIES.find((c) => c.code === currency);
   if (!curr) return `${currency} ${amount.toLocaleString()}`;
   return `${curr.symbol}${amount.toLocaleString()}`;

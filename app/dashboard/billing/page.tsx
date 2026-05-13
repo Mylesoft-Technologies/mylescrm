@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   Plus, Download, Send, CreditCard, Smartphone, Search,
   MoreHorizontal, CheckCircle2, Clock, AlertTriangle,
-  FileText, DollarSign, TrendingUp, ArrowUpRight, Loader2, Eye
+  FileText, DollarSign, TrendingUp, Loader2, Eye
 } from "lucide-react";
 
 const STATUS_CONFIG: Record<string, { label: string; class: string; icon: any }> = {
@@ -16,19 +16,19 @@ const STATUS_CONFIG: Record<string, { label: string; class: string; icon: any }>
 };
 
 const MOCK_INVOICES = [
-  { id: "INV-0001", client: "Acme Corp", email: "billing@acmecorp.com", amount: 48000, paid: 48000, currency: "USD", status: "paid", dueDate: "Mar 1", issueDate: "Feb 15", method: "stripe" },
-  { id: "INV-0002", client: "Safari Logistics", email: "priya@safariltd.com", amount: 24000, paid: 0, currency: "USD", status: "sent", dueDate: "Mar 25", issueDate: "Mar 1", method: null },
-  { id: "INV-0003", client: "TechStartup UAE", email: "omar@techstartup.ae", amount: 12000, paid: 0, currency: "USD", status: "overdue", dueDate: "Mar 10", issueDate: "Feb 25", method: null },
-  { id: "INV-0004", client: "Retail Hub Kenya", email: "j.mwangi@retailhub.co.ke", amount: 3600, paid: 1800, currency: "USD", status: "partial", dueDate: "Mar 20", issueDate: "Mar 5", method: "mpesa" },
-  { id: "INV-0005", client: "EduTech Solutions", email: "sofia@edutech.com", amount: 18000, paid: 0, currency: "USD", status: "draft", dueDate: "Apr 5", issueDate: "Mar 13", method: null },
-  { id: "INV-0006", client: "FinTech Africa", email: "d.ochieng@fintech.io", amount: 36000, paid: 36000, currency: "USD", status: "paid", dueDate: "Feb 28", issueDate: "Feb 12", method: "stripe" },
+  { id: "INV-0001", client: "Acme Corp", email: "billing@acmecorp.com", amount: 48000, paid: 48000, currency: "KES", status: "paid", dueDate: "Mar 1", issueDate: "Feb 15", method: "stripe" },
+  { id: "INV-0002", client: "Safari Logistics", email: "priya@safariltd.com", amount: 24000, paid: 0, currency: "KES", status: "sent", dueDate: "Mar 25", issueDate: "Mar 1", method: null },
+  { id: "INV-0003", client: "TechStartup UAE", email: "omar@techstartup.ae", amount: 12000, paid: 0, currency: "KES", status: "overdue", dueDate: "Mar 10", issueDate: "Feb 25", method: null },
+  { id: "INV-0004", client: "Retail Hub Kenya", email: "j.mwangi@retailhub.co.ke", amount: 3600, paid: 1800, currency: "KES", status: "partial", dueDate: "Mar 20", issueDate: "Mar 5", method: "mpesa" },
+  { id: "INV-0005", client: "EduTech Solutions", email: "sofia@edutech.com", amount: 18000, paid: 0, currency: "KES", status: "draft", dueDate: "Apr 5", issueDate: "Mar 13", method: null },
+  { id: "INV-0006", client: "FinTech Africa", email: "d.ochieng@fintech.io", amount: 36000, paid: 36000, currency: "KES", status: "paid", dueDate: "Feb 28", issueDate: "Feb 12", method: "stripe" },
 ];
 
 const STATS = [
-  { label: "Total Revenue", value: "$84,000", subtitle: "All time", icon: DollarSign, color: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400" },
-  { label: "Outstanding", value: "$35,800", subtitle: "3 invoices", icon: Clock, color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400" },
-  { label: "Overdue", value: "$12,000", subtitle: "1 invoice", icon: AlertTriangle, color: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400" },
-  { label: "This Month", value: "$58,400", subtitle: "+22% vs last month", icon: TrendingUp, color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400" },
+  { label: "Total Revenue", value: "KSh 84,000", subtitle: "All time", icon: DollarSign, color: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400" },
+  { label: "Outstanding", value: "KSh 35,800", subtitle: "3 invoices", icon: Clock, color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400" },
+  { label: "Overdue", value: "KSh 12,000", subtitle: "1 invoice", icon: AlertTriangle, color: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400" },
+  { label: "This Month", value: "KSh 58,400", subtitle: "+22% vs last month", icon: TrendingUp, color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400" },
 ];
 
 type PayModal = { invoiceId: string; client: string; amount: number } | null;
@@ -141,10 +141,10 @@ export default function BillingPage() {
                       <p className="text-xs text-muted-foreground">{inv.email}</p>
                     </td>
                     <td className="px-4 py-4">
-                      <p className="font-mono font-semibold">${inv.amount.toLocaleString()}</p>
+                      <p className="font-mono font-semibold">KSh {inv.amount.toLocaleString()}</p>
                       {inv.paid > 0 && inv.paid < inv.amount && (
                         <p className="text-xs text-emerald-600 mt-0.5">
-                          ${inv.paid.toLocaleString()} paid
+                          KSh {inv.paid.toLocaleString()} paid
                         </p>
                       )}
                     </td>
@@ -222,7 +222,7 @@ export default function BillingPage() {
               <>
                 <h2 className="text-lg font-semibold mb-1">Collect Payment</h2>
                 <p className="text-sm text-muted-foreground mb-5">
-                  {payModal.client} · <span className="font-mono font-semibold text-foreground">${payModal.amount.toLocaleString()}</span>
+                  {payModal.client} · <span className="font-mono font-semibold text-foreground">KSh {payModal.amount.toLocaleString()}</span>
                 </p>
 
                 {/* Method select */}
