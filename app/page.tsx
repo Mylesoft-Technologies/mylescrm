@@ -12,9 +12,12 @@ import {
   FeatureGrid,
   FloatingHomeActions,
   MarketingShell,
+  MylesCorpBand,
   PricingGrid,
   ProductPreview,
+  ValuesGrid,
   faqs,
+  productPillars,
   proofStats,
   useCases,
 } from "@/components/marketing/site";
@@ -34,7 +37,7 @@ export default function HomePage() {
                 MylesCRM
               </h1>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
-                Manage leads, contacts, deals, email follow-ups, invoices, and sales forecasts from one polished CRM built for ambitious teams in East Africa and beyond.
+                Manage leads, contacts, deals, email follow-ups, invoices, and sales forecasts from one polished MylesCorp product built for ambitious teams in East Africa and beyond.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#1d5fd6] px-5 py-3 text-sm font-semibold text-white hover:bg-[#174fb5]">
@@ -57,6 +60,8 @@ export default function HomePage() {
           </div>
         </section>
 
+        <MylesCorpBand />
+
         <section className="px-5 py-16 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <div className="mb-10 max-w-3xl">
@@ -70,6 +75,23 @@ export default function HomePage() {
         </section>
 
         <section className="bg-white px-5 py-16 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-10 grid gap-6 md:grid-cols-[0.9fr_1.1fr] md:items-end">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#1d5fd6]">MylesCorp DNA</p>
+                <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
+                  The M.Y.L.E.S. principle, applied to revenue teams.
+                </h2>
+              </div>
+              <p className="text-base leading-7 text-slate-600">
+                MylesCRM shares MylesCorp's values across every product: mastery in execution, youth empowerment, ethical leadership, entrepreneurship, and service to communities.
+              </p>
+            </div>
+            <ValuesGrid />
+          </div>
+        </section>
+
+        <section className="px-5 py-16 lg:px-8">
           <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#1d5fd6]">Use cases</p>
@@ -86,6 +108,26 @@ export default function HomePage() {
                   <item.icon className="mb-3 h-5 w-5 text-[#1d5fd6]" />
                   <h3 className="font-semibold text-slate-950">{item.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-slate-600">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white px-5 py-16 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-10 max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#1d5fd6]">Why it feels local</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
+                Global CRM discipline, grounded in African operating reality.
+              </h2>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {productPillars.map((pillar) => (
+                <div key={pillar.title} className="rounded-lg border border-slate-200 bg-slate-50 p-6">
+                  <pillar.icon className="mb-4 h-6 w-6 text-[#1d5fd6]" />
+                  <h3 className="font-semibold text-slate-950">{pillar.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{pillar.text}</p>
                 </div>
               ))}
             </div>

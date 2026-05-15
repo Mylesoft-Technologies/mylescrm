@@ -9,10 +9,13 @@ import {
   Clock,
   CreditCard,
   GitBranch,
+  Globe2,
   Headphones,
+  HeartHandshake,
   Mail,
   MessageCircle,
   Phone,
+  Rocket,
   ShieldCheck,
   Sparkles,
   Target,
@@ -68,6 +71,66 @@ export const featureHighlights = [
   },
 ];
 
+export const mylesCorpStats = [
+  ["2020", "founded in Kenya"],
+  ["500+", "schools transformed"],
+  ["50K+", "lives impacted"],
+  ["18", "products across sectors"],
+  ["47", "counties reached"],
+  ["24/7", "support mindset"],
+];
+
+export const mylesPrinciples = [
+  {
+    letter: "M",
+    title: "Mastery",
+    text: "We build with discipline, craft, and continuous improvement so sales teams get software that feels dependable every day.",
+    tags: ["Excellence", "Expertise", "Growth"],
+  },
+  {
+    letter: "Y",
+    title: "Youth Empowerment",
+    text: "MylesCRM carries the wider MylesCorp belief that African talent deserves tools, mentorship, and systems that unlock serious opportunity.",
+    tags: ["Education", "Mentorship", "Next generation"],
+  },
+  {
+    letter: "L",
+    title: "Leadership",
+    text: "We design for accountable teams: clear ownership, ethical customer communication, and leaders who can see what needs action.",
+    tags: ["Integrity", "Courage", "Accountability"],
+  },
+  {
+    letter: "E",
+    title: "Entrepreneurship",
+    text: "We help ambitious organizations move faster, test smarter sales motions, and turn customer conversations into measurable growth.",
+    tags: ["Innovation", "Ownership", "Value creation"],
+  },
+  {
+    letter: "S",
+    title: "Service",
+    text: "We treat CRM as a service discipline: understand the customer, follow through, and create impact that is shared beyond the sale.",
+    tags: ["Impact", "Community", "Purpose"],
+  },
+];
+
+export const productPillars = [
+  {
+    icon: Globe2,
+    title: "Built by Africans, for African markets",
+    text: "MylesCRM understands regional business rhythms: relationship-led selling, mobile-first follow-up, M-Pesa readiness, and KSh reporting.",
+  },
+  {
+    icon: Rocket,
+    title: "Part of a wider product family",
+    text: "The CRM sits inside MylesCorp's AI-powered portfolio across education, healthcare, agriculture, transport, and business operations.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Human relationships first",
+    text: "Automation should strengthen trust. The product keeps notes, context, tasks, and payment history close to every customer conversation.",
+  },
+];
+
 export const plans = [
   {
     name: "Starter",
@@ -106,6 +169,10 @@ export const faqs = [
   {
     q: "Can we talk to someone before choosing a plan?",
     a: "Yes. Use the WhatsApp or live chat buttons, or open the contact page to request a consultation with the MylesCRM team.",
+  },
+  {
+    q: "Is MylesCRM connected to MylesCorp Technologies?",
+    a: "Yes. MylesCRM is a MylesCorp Technologies product and follows the same mission, service culture, and M.Y.L.E.S. operating principles used across the product portfolio.",
   },
 ];
 
@@ -161,7 +228,10 @@ export function MarketingFooter() {
             <span className="font-semibold">MylesCRM</span>
           </div>
           <p className="max-w-sm text-sm leading-6 text-slate-600">
-            AI-powered customer relationship management for teams that need cleaner pipelines, faster follow-up, and better sales visibility.
+            A MylesCorp Technologies product for teams that need cleaner pipelines, faster follow-up, and better sales visibility.
+          </p>
+          <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+            Transforming Industries, Empowering Generations.
           </p>
         </div>
         <FooterColumn title="Product" links={[["Features", "/features"], ["Pricing", "/pricing"], ["Sign in", "/auth/login"]]} />
@@ -175,6 +245,58 @@ export function MarketingFooter() {
         </a>
       </div>
     </footer>
+  );
+}
+
+export function ValuesGrid() {
+  return (
+    <div className="grid gap-4 lg:grid-cols-5">
+      {mylesPrinciples.map((value) => (
+        <div key={value.title} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#132033] text-lg font-semibold text-white">
+            {value.letter}
+          </span>
+          <h2 className="mt-4 text-lg font-semibold text-slate-950">{value.title}</h2>
+          <p className="mt-2 text-sm leading-6 text-slate-600">{value.text}</p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {value.tags.map((tag) => (
+              <span key={tag} className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function MylesCorpBand() {
+  return (
+    <section className="bg-[#132033] px-5 py-16 text-white lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#56c5b6]">A MylesCorp product</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
+            Built on the same mission transforming African industries.
+          </h2>
+          <p className="mt-4 text-base leading-7 text-slate-300">
+            MylesCorp Technologies builds AI-powered software for education, healthcare, agriculture, transport, and business teams. MylesCRM brings that same local expertise into revenue operations.
+          </p>
+          <a href="https://mylescorptech.com/about" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-[#56c5b6]">
+            Read the MylesCorp story <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-3">
+          {mylesCorpStats.map(([value, label]) => (
+            <div key={label} className="rounded-lg border border-white/10 bg-white/[0.08] p-4">
+              <p className="text-2xl font-semibold">{value}</p>
+              <p className="mt-1 text-sm leading-5 text-slate-300">{label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -340,10 +462,10 @@ export function PricingGrid() {
 }
 
 export const proofStats = [
-  ["300+", "businesses supported"],
-  ["1M+", "customer records planned for scale"],
-  ["45%", "target productivity lift"],
-  ["60%", "retention-focused workflows"],
+  ["18", "MylesCorp product ecosystem"],
+  ["47", "Kenyan counties reached"],
+  ["KSh", "default sales currency"],
+  ["24/7", "support-led mindset"],
 ];
 
 export const useCases = [

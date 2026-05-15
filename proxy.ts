@@ -5,6 +5,12 @@ export default authkitProxy({
     enabled: true,
     unauthenticatedPaths: [
       "/",
+      "/features",
+      "/pricing",
+      "/about",
+      "/contact",
+      "/privacy",
+      "/terms",
       "/auth/login",
       "/auth/signup",
       "/api/auth/login",

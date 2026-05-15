@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import { MarketingShell, SectionHeader, contactMethods } from "@/components/marketing/site";
+import { CTASection, MarketingShell, SectionHeader, contactMethods } from "@/components/marketing/site";
 
 export const metadata = {
   title: "Contact | MylesCRM",
@@ -15,7 +15,7 @@ export default function ContactPage() {
             <SectionHeader
               eyebrow="Contact"
               title="Talk to the MylesCRM team."
-              text="Tell us about your team, your pipeline, and the customer workflows you want to improve. We will help you choose the right setup."
+              text="Tell us about your team, your pipeline, and the customer workflows you want to improve. You will speak with a MylesCorp product team that understands local operations and serious growth goals."
             />
             <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
               <div className="space-y-4">
@@ -52,6 +52,30 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
+        <section className="bg-white px-5 py-16 lg:px-8">
+          <div className="mx-auto max-w-6xl">
+            <SectionHeader
+              eyebrow="What happens next"
+              title="A practical path from conversation to launch."
+              text="MylesCRM implementation follows the wider MylesCorp habit of discovery, design, deployment, and measurable impact."
+            />
+            <div className="grid gap-4 md:grid-cols-4">
+              {[
+                ["1", "Discovery", "Map your sales process, users, data sources, and reporting needs."],
+                ["2", "Setup", "Configure pipeline stages, contacts, team roles, and KSh billing preferences."],
+                ["3", "Training", "Help reps and managers adopt daily workflows without heavy admin."],
+                ["4", "Impact", "Review pipeline visibility, follow-up discipline, and revenue reporting."],
+              ].map(([step, title, text]) => (
+                <div key={title} className="rounded-lg border border-slate-200 bg-slate-50 p-5">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1d5fd6] text-sm font-semibold text-white">{step}</span>
+                  <h2 className="mt-4 font-semibold text-slate-950">{title}</h2>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+        <CTASection />
       </main>
     </MarketingShell>
   );
