@@ -76,6 +76,36 @@ export default function HomePage() {
 
         <section className="bg-white px-5 py-16 lg:px-8">
           <div className="mx-auto max-w-7xl">
+            <div className="mb-10 max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#1d5fd6]">Explore the platform</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
+                More than pages. A complete buyer journey.
+              </h2>
+              <p className="mt-4 text-base leading-7 text-slate-600">
+                Evaluate the product by industry, implementation path, security posture, pricing, and practical resources before you talk to the team.
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {[
+                ["Industries", "See where MylesCRM fits best across sales-led sectors.", "/industries"],
+                ["Implementation", "Understand launch, migration, training, and adoption.", "/implementation"],
+                ["Security", "Review authentication, access, infrastructure, and data habits.", "/security"],
+                ["Resources", "Read practical guides for CRM readiness and revenue operations.", "/resources"],
+              ].map(([title, text, href]) => (
+                <Link key={title} href={href} className="group rounded-lg border border-slate-200 bg-slate-50 p-5 hover:border-[#1d5fd6]">
+                  <h3 className="font-semibold text-slate-950">{title}</h3>
+                  <p className="mt-2 min-h-16 text-sm leading-6 text-slate-600">{text}</p>
+                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#1d5fd6]">
+                    View page <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-5 py-16 lg:px-8">
+          <div className="mx-auto max-w-7xl">
             <div className="mb-10 grid gap-6 md:grid-cols-[0.9fr_1.1fr] md:items-end">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#1d5fd6]">MylesCorp DNA</p>

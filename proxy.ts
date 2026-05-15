@@ -6,6 +6,10 @@ export default authkitProxy({
     unauthenticatedPaths: [
       "/",
       "/features",
+      "/industries",
+      "/implementation",
+      "/security",
+      "/resources",
       "/pricing",
       "/about",
       "/contact",

@@ -3,6 +3,7 @@ import {
   Activity,
   ArrowRight,
   BarChart3,
+  BookOpen,
   Bot,
   Building2,
   Check,
@@ -12,6 +13,8 @@ import {
   Globe2,
   Headphones,
   HeartHandshake,
+  Layers3,
+  LockKeyhole,
   Mail,
   MessageCircle,
   Phone,
@@ -33,9 +36,10 @@ const whatsappMessage = encodeURIComponent(
 
 export const navItems = [
   { href: "/features", label: "Features" },
+  { href: "/industries", label: "Industries" },
+  { href: "/implementation", label: "Implementation" },
+  { href: "/security", label: "Security" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export const featureHighlights = [
@@ -131,6 +135,89 @@ export const productPillars = [
   },
 ];
 
+export const industrySolutions = [
+  {
+    icon: Building2,
+    title: "SMEs and service businesses",
+    text: "Replace scattered spreadsheets with one place for contacts, deal stages, invoices, owners, and follow-ups.",
+  },
+  {
+    icon: Target,
+    title: "Real estate and property teams",
+    text: "Track buyers, landlords, properties, showings, commission pipelines, and post-visit follow-up.",
+  },
+  {
+    icon: Activity,
+    title: "Insurance and financial services",
+    text: "Manage renewals, policy leads, account reviews, compliance-friendly notes, and activity accountability.",
+  },
+  {
+    icon: Globe2,
+    title: "Field sales and distribution",
+    text: "Give reps a simple mobile-ready workspace for account updates after visits and route-based selling.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Education and institutional sales",
+    text: "Support long buying cycles with stakeholder mapping, proposals, demos, approvals, and relationship history.",
+  },
+  {
+    icon: Sparkles,
+    title: "AI-ready growth teams",
+    text: "Use scoring, drafting, summaries, and forecasting to turn customer data into daily action.",
+  },
+];
+
+export const implementationSteps = [
+  {
+    title: "Discovery",
+    text: "Map your sales process, team roles, current tools, data sources, pipeline stages, and reporting expectations.",
+  },
+  {
+    title: "Configuration",
+    text: "Set up contacts, companies, pipelines, permissions, KSh defaults, invoices, and local operating preferences.",
+  },
+  {
+    title: "Migration",
+    text: "Clean and import spreadsheets or existing CRM exports so teams begin with usable customer context.",
+  },
+  {
+    title: "Training",
+    text: "Train managers and reps around practical daily workflows: follow-up, deal movement, notes, and forecast hygiene.",
+  },
+  {
+    title: "Launch",
+    text: "Go live with a measured adoption plan, support channel, and clear first-week operating rhythm.",
+  },
+  {
+    title: "Optimization",
+    text: "Review pipeline quality, activity patterns, reporting gaps, and automation opportunities after real usage begins.",
+  },
+];
+
+export const securityPractices = [
+  {
+    icon: LockKeyhole,
+    title: "Authentication boundary",
+    text: "Protected dashboard and API workflows sit behind WorkOS AuthKit while public marketing pages remain accessible to buyers.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Least-access operating model",
+    text: "CRM access should be assigned by role so users only see and act on the customer data they need.",
+  },
+  {
+    icon: Layers3,
+    title: "Managed infrastructure",
+    text: "The app is deployed through Vercel and Convex so production releases, functions, and data operations use managed platforms.",
+  },
+  {
+    icon: BookOpen,
+    title: "Responsible data habits",
+    text: "MylesCRM is built for professional customer engagement: accurate records, lawful outreach, and respectful communication.",
+  },
+];
+
 export const plans = [
   {
     name: "Starter",
@@ -196,7 +283,7 @@ export function MarketingNav() {
           </span>
           <span className="text-lg font-semibold tracking-tight">MylesCRM</span>
         </Link>
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-5 lg:flex">
           {navItems.map((item) => (
             <Link key={item.href} href={item.href} className="text-sm font-medium text-slate-600 hover:text-slate-950">
               {item.label}
@@ -204,9 +291,6 @@ export function MarketingNav() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <Link href="/auth/login" className="hidden rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-950 sm:block">
-            Sign in
-          </Link>
           <Link href="/contact" className="rounded-lg bg-[#1d5fd6] px-4 py-2 text-sm font-semibold text-white hover:bg-[#174fb5]">
             Book a demo
           </Link>
@@ -234,8 +318,8 @@ export function MarketingFooter() {
             Transforming Industries, Empowering Generations.
           </p>
         </div>
-        <FooterColumn title="Product" links={[["Features", "/features"], ["Pricing", "/pricing"], ["Sign in", "/auth/login"]]} />
-        <FooterColumn title="Company" links={[["About", "/about"], ["Contact", "/contact"], ["Privacy", "/privacy"]]} />
+        <FooterColumn title="Product" links={[["Features", "/features"], ["Industries", "/industries"], ["Implementation", "/implementation"], ["Security", "/security"]]} />
+        <FooterColumn title="Company" links={[["About", "/about"], ["Resources", "/resources"], ["Contact", "/contact"]]} />
         <FooterColumn title="Legal" links={[["Terms", "/terms"], ["Privacy", "/privacy"]]} />
       </div>
       <div className="border-t border-slate-200 px-5 py-5 text-center text-sm text-slate-500">
