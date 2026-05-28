@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { CTASection, MarketingShell, SectionHeader } from "@/components/marketing/site";
 
 export const metadata = {
-  title: "Resources | MylesCRM",
+  title: "Resources",
   description: "Practical MylesCRM resources for CRM readiness, implementation planning, sales operations, and KSh-first reporting.",
 };
 
@@ -43,10 +43,10 @@ export default function ResourcesPage() {
             />
             <div className="grid gap-4 md:grid-cols-2">
               {resources.map((resource) => (
-                <Link key={resource.title} href={resource.href} className="group rounded-lg border border-slate-200 bg-white p-6 shadow-sm hover:border-[#1d5fd6]">
-                  <h2 className="text-lg font-semibold text-slate-950">{resource.title}</h2>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{resource.text}</p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#1d5fd6]">
+                <Link key={resource.title} href={resource.href} className="group rounded-lg border border-border bg-card p-6 shadow-sm hover:border-primary">
+                  <h2 className="text-lg font-semibold text-foreground">{resource.title}</h2>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{resource.text}</p>
+                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
                     Read more <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                   </span>
                 </Link>

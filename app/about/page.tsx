@@ -9,7 +9,7 @@ import {
 } from "@/components/marketing/site";
 
 export const metadata = {
-  title: "About | MylesCRM",
+  title: "About",
   description: "Learn how MylesCRM carries the MylesCorp mission, values, and African innovation focus into customer relationship management.",
 };
 
@@ -26,30 +26,30 @@ export default function AboutPage() {
             />
             <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-6">
               {mylesCorpStats.map(([value, label]) => (
-                <div key={label} className="rounded-lg border border-slate-200 bg-white p-5 text-center shadow-sm">
-                  <p className="text-2xl font-semibold text-slate-950">{value}</p>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{label}</p>
+                <div key={label} className="rounded-lg border border-border bg-card p-5 text-center shadow-sm">
+                  <p className="text-2xl font-semibold text-foreground">{value}</p>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{label}</p>
                 </div>
               ))}
             </div>
             <div className="mt-10 grid gap-5 md:grid-cols-2">
-              <div className="rounded-lg border border-slate-200 bg-white p-8 shadow-sm">
-                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#1d5fd6]">Mission</p>
-                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-950">Turn relationship work into measurable growth.</h2>
-                <p className="mt-4 text-sm leading-7 text-slate-600">
+              <div className="rounded-lg border border-border bg-card p-8 shadow-sm">
+                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">Mission</p>
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground">Turn relationship work into measurable growth.</h2>
+                <p className="mt-4 text-sm leading-7 text-muted-foreground">
                   MylesCRM helps organizations capture customer context, act on the right opportunities, and build operating discipline around follow-up, forecasting, invoices, and retention.
                 </p>
               </div>
-              <div className="rounded-lg border border-slate-200 bg-white p-8 shadow-sm">
-                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#1d5fd6]">Vision</p>
-                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-950">Be the trusted CRM for African sales teams.</h2>
-                <p className="mt-4 text-sm leading-7 text-slate-600">
+              <div className="rounded-lg border border-border bg-card p-8 shadow-sm">
+                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">Vision</p>
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground">Be the trusted CRM for African sales teams.</h2>
+                <p className="mt-4 text-sm leading-7 text-muted-foreground">
                   The long-term goal is a CRM that bridges the digital divide for SMEs, institutions, and enterprises by making powerful sales systems simple, local, and AI-ready.
                 </p>
               </div>
             </div>
-            <div className="mt-10 rounded-lg border border-slate-200 bg-white p-8 shadow-sm">
-              <h2 className="text-2xl font-semibold tracking-tight text-slate-950">How the MylesCorp approach becomes CRM practice</h2>
+            <div className="mt-10 rounded-lg border border-border bg-card p-8 shadow-sm">
+              <h2 className="text-2xl font-semibold tracking-tight text-foreground">How the MylesCorp approach becomes CRM practice</h2>
               <div className="mt-5 grid gap-6 md:grid-cols-3">
                 {[
                   ["Discovery", "Understand the actual sales motion before forcing teams into rigid software habits."],
@@ -57,15 +57,15 @@ export default function AboutPage() {
                   ["Deployment", "Support onboarding, training, iteration, and measurable impact after the product goes live."],
                 ].map(([title, text]) => (
                   <div key={title}>
-                    <h3 className="font-semibold text-slate-950">{title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
+                    <h3 className="font-semibold text-foreground">{title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
                   </div>
                 ))}
               </div>
             </div>
           </div>
         </section>
-        <section className="bg-white px-5 py-16 lg:px-8">
+        <section className="bg-muted/20 px-5 py-16 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <SectionHeader
               eyebrow="Core values"
@@ -84,10 +84,10 @@ export default function AboutPage() {
             />
             <div className="grid gap-4 md:grid-cols-3">
               {productPillars.map((pillar) => (
-                <div key={pillar.title} className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-                  <pillar.icon className="mb-4 h-6 w-6 text-[#1d5fd6]" />
-                  <h2 className="font-semibold text-slate-950">{pillar.title}</h2>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{pillar.text}</p>
+                <div key={pillar.title} className="rounded-lg border border-border bg-card p-6 shadow-sm">
+                  <pillar.icon className="mb-4 h-6 w-6 text-primary" />
+                  <h2 className="font-semibold text-foreground">{pillar.title}</h2>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{pillar.text}</p>
                 </div>
               ))}
             </div>

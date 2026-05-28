@@ -1,7 +1,7 @@
 import { MarketingShell, SectionHeader } from "@/components/marketing/site";
 
 export const metadata = {
-  title: "Terms of Service | MylesCRM",
+  title: "Terms of Service",
   description: "Terms of service for using MylesCRM.",
 };
 
@@ -15,7 +15,7 @@ export default function TermsPage() {
             title="Terms of Service"
             text="These terms summarize the expected professional use of MylesCRM, a MylesCorp Technologies product, and the responsibilities of customers using the platform."
           />
-          <div className="space-y-6 rounded-lg border border-slate-200 bg-white p-8 text-sm leading-7 text-slate-600 shadow-sm">
+          <div className="space-y-6 rounded-lg border border-border bg-card p-8 text-sm leading-7 text-muted-foreground shadow-sm">
             <TermsSection title="Use of the service" text="MylesCRM is provided for lawful business relationship management, sales operations, reporting, communications, invoicing, and related customer workflows." />
             <TermsSection title="Customer responsibility" text="Customers are responsible for the accuracy of data entered into the platform, user permissions, account security, and compliance with applicable laws when contacting prospects or customers." />
             <TermsSection title="Payments and subscriptions" text="Paid plans are presented in KSh/KES unless otherwise agreed in writing. Payment providers may apply their own processing rules, verification steps, and transaction requirements." />
@@ -32,7 +32,7 @@ export default function TermsPage() {
 function TermsSection({ title, text }: { title: string; text: string }) {
   return (
     <section>
-      <h2 className="text-lg font-semibold text-slate-950">{title}</h2>
+      <h2 className="text-lg font-semibold text-foreground">{title}</h2>
       <p className="mt-2">{text}</p>
     </section>
   );

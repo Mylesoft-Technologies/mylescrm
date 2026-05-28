@@ -8,7 +8,7 @@ import {
 } from "@/components/marketing/site";
 
 export const metadata = {
-  title: "Features | MylesCRM",
+  title: "Features",
   description: "Explore MylesCRM features for contacts, pipelines, AI sales insight, reporting, emails, invoicing, and payments.",
 };
 
@@ -26,7 +26,7 @@ export default function FeaturesPage() {
             <FeatureGrid />
           </div>
         </section>
-        <section className="bg-white px-5 py-16 lg:px-8">
+        <section className="bg-muted/20 px-5 py-16 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <SectionHeader
               eyebrow="Workspace"
@@ -54,15 +54,15 @@ export default function FeaturesPage() {
                 ["Email", "Sales communication workflows tied back to customer context."],
                 ["Settings", "Organization defaults, including KES currency and Africa/Nairobi timezone."],
               ].map(([title, text]) => (
-                <div key={title} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-                  <h2 className="font-semibold text-slate-950">{title}</h2>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
+                <div key={title} className="rounded-lg border border-border bg-card p-5 shadow-sm">
+                  <h2 className="font-semibold text-foreground">{title}</h2>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
-        <section className="bg-white px-5 py-16 lg:px-8">
+        <section className="bg-muted/20 px-5 py-16 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <SectionHeader
               eyebrow="MylesCorp advantage"
@@ -71,10 +71,10 @@ export default function FeaturesPage() {
             />
             <div className="grid gap-4 md:grid-cols-3">
               {productPillars.map((pillar) => (
-                <div key={pillar.title} className="rounded-lg border border-slate-200 bg-slate-50 p-6">
-                  <pillar.icon className="mb-4 h-6 w-6 text-[#1d5fd6]" />
-                  <h2 className="font-semibold text-slate-950">{pillar.title}</h2>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{pillar.text}</p>
+                <div key={pillar.title} className="rounded-lg border border-border bg-muted/40 p-6">
+                  <pillar.icon className="mb-4 h-6 w-6 text-primary" />
+                  <h2 className="font-semibold text-foreground">{pillar.title}</h2>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{pillar.text}</p>
                 </div>
               ))}
             </div>

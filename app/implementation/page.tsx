@@ -6,7 +6,7 @@ import {
 } from "@/components/marketing/site";
 
 export const metadata = {
-  title: "Implementation | MylesCRM",
+  title: "Implementation",
   description: "See the MylesCRM implementation process from discovery and configuration to migration, training, launch, and optimization.",
 };
 
@@ -23,27 +23,27 @@ export default function ImplementationPage() {
             />
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {implementationSteps.map((step, index) => (
-                <div key={step.title} className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#132033] text-sm font-semibold text-white">
+                <div key={step.title} className="rounded-lg border border-border bg-card p-6 shadow-sm">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-sm font-semibold text-primary-foreground">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <h2 className="mt-5 text-lg font-semibold text-slate-950">{step.title}</h2>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{step.text}</p>
+                  <h2 className="mt-5 text-lg font-semibold text-foreground">{step.title}</h2>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{step.text}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
-        <section className="bg-white px-5 py-16 lg:px-8">
+        <section className="bg-muted/20 px-5 py-16 lg:px-8">
           <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-3">
             {[
               ["Week 1", "Process discovery, user roles, pipeline design, and data readiness review."],
               ["Week 2", "Configuration, imports, dashboards, invoice setup, and team walkthroughs."],
               ["Week 3+", "Live adoption support, manager reviews, AI workflow tuning, and reporting improvements."],
             ].map(([title, text]) => (
-              <div key={title} className="rounded-lg border border-slate-200 bg-slate-50 p-6">
-                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#1d5fd6]">{title}</p>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{text}</p>
+              <div key={title} className="rounded-lg border border-border bg-muted/40 p-6">
+                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">{title}</p>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p>
               </div>
             ))}
           </div>

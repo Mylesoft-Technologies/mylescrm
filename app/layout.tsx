@@ -1,22 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { ConvexClientProvider } from "./providers";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Toaster } from "react-hot-toast";
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-geist-sans",
-  display: "swap",
-});
-
-const dmMono = DM_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-  weight: ["400", "500"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -26,8 +12,8 @@ export const metadata: Metadata = {
   description:
     "The modern AI-powered CRM for fast-growing teams. Manage contacts, deals, and pipelines with AI automation.",
   keywords: ["CRM", "sales", "pipeline", "AI", "contacts", "deals"],
-  authors: [{ name: "Mylesoft Technologies", url: "https://mylesoft.com" }],
-  creator: "Mylesoft Technologies",
+  authors: [{ name: "Jonathan Myles" }],
+  creator: "MylesCorp Technologies Ltd",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -56,7 +42,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${dmSans.variable} ${dmMono.variable} font-sans antialiased`}>
+      <body className="font-sans antialiased">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <ConvexClientProvider>
             {children}

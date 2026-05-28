@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
 import {
   Activity,
   ArrowRight,
@@ -265,70 +267,13 @@ export const faqs = [
 
 export function MarketingShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-[#f7f9fc] text-[#132033]">
-      <MarketingNav />
-      {children}
-      <MarketingFooter />
+    <div className="min-h-screen overflow-hidden bg-background text-foreground">
+      <Navbar />
+      <div className="pt-28">{children}</div>
+      <footer className="px-4 py-12">
+        <Footer />
+      </footer>
     </div>
-  );
-}
-
-export function MarketingNav() {
-  return (
-    <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
-        <Link href="/" className="flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1d5fd6] text-white">
-            <Zap className="h-4 w-4" />
-          </span>
-          <span className="text-lg font-semibold tracking-tight">MylesCRM</span>
-        </Link>
-        <nav className="hidden items-center gap-5 lg:flex">
-          {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="text-sm font-medium text-slate-600 hover:text-slate-950">
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <div className="flex items-center gap-2">
-          <Link href="/contact" className="rounded-lg bg-[#1d5fd6] px-4 py-2 text-sm font-semibold text-white hover:bg-[#174fb5]">
-            Book a demo
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
-
-export function MarketingFooter() {
-  return (
-    <footer className="border-t border-slate-200 bg-white">
-      <div className="mx-auto grid max-w-7xl gap-8 px-5 py-10 md:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr] lg:px-8">
-        <div>
-          <div className="mb-3 flex items-center gap-3">
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1d5fd6] text-white">
-              <Zap className="h-4 w-4" />
-            </span>
-            <span className="font-semibold">MylesCRM</span>
-          </div>
-          <p className="max-w-sm text-sm leading-6 text-slate-600">
-            A MylesCorp Technologies product for teams that need cleaner pipelines, faster follow-up, and better sales visibility.
-          </p>
-          <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
-            Transforming Industries, Empowering Generations.
-          </p>
-        </div>
-        <FooterColumn title="Product" links={[["Features", "/features"], ["Industries", "/industries"], ["Implementation", "/implementation"], ["Security", "/security"]]} />
-        <FooterColumn title="Company" links={[["About", "/about"], ["Resources", "/resources"], ["Contact", "/contact"]]} />
-        <FooterColumn title="Legal" links={[["Terms", "/terms"], ["Privacy", "/privacy"]]} />
-      </div>
-      <div className="border-t border-slate-200 px-5 py-5 text-center text-sm text-slate-500">
-        Powered by{" "}
-        <a href="https://mylescorptech.com" className="font-semibold text-[#1d5fd6] hover:underline">
-          MylesCorp Technologies
-        </a>
-      </div>
-    </footer>
   );
 }
 
@@ -336,15 +281,15 @@ export function ValuesGrid() {
   return (
     <div className="grid gap-4 lg:grid-cols-5">
       {mylesPrinciples.map((value) => (
-        <div key={value.title} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#132033] text-lg font-semibold text-white">
+        <div key={value.title} className="rounded-lg border border-border bg-card p-5 shadow-sm">
+          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-lg font-semibold text-primary-foreground">
             {value.letter}
           </span>
-          <h2 className="mt-4 text-lg font-semibold text-slate-950">{value.title}</h2>
-          <p className="mt-2 text-sm leading-6 text-slate-600">{value.text}</p>
+          <h2 className="mt-4 text-lg font-semibold text-foreground">{value.title}</h2>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">{value.text}</p>
           <div className="mt-4 flex flex-wrap gap-2">
             {value.tags.map((tag) => (
-              <span key={tag} className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600">
+              <span key={tag} className="rounded-full bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground">
                 {tag}
               </span>
             ))}
@@ -357,25 +302,25 @@ export function ValuesGrid() {
 
 export function MylesCorpBand() {
   return (
-    <section className="bg-[#132033] px-5 py-16 text-white lg:px-8">
+    <section className="border-y border-border bg-muted/30 px-5 py-16 text-foreground lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#56c5b6]">A MylesCorp product</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">A MylesCorp product</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
             Built on the same mission transforming African industries.
           </h2>
-          <p className="mt-4 text-base leading-7 text-slate-300">
+          <p className="mt-4 text-base leading-7 text-muted-foreground">
             MylesCorp Technologies builds AI-powered software for education, healthcare, agriculture, transport, and business teams. MylesCRM brings that same local expertise into revenue operations.
           </p>
-          <a href="https://mylescorptech.com/about" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-[#56c5b6]">
+          <a href="https://mylescorptech.com/about" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80">
             Read the MylesCorp story <ArrowRight className="h-4 w-4" />
           </a>
         </div>
         <div className="grid gap-3 sm:grid-cols-3">
           {mylesCorpStats.map(([value, label]) => (
-            <div key={label} className="rounded-lg border border-white/10 bg-white/[0.08] p-4">
+            <div key={label} className="rounded-lg border border-border bg-card p-4">
               <p className="text-2xl font-semibold">{value}</p>
-              <p className="mt-1 text-sm leading-5 text-slate-300">{label}</p>
+              <p className="mt-1 text-sm leading-5 text-muted-foreground">{label}</p>
             </div>
           ))}
         </div>
@@ -384,27 +329,12 @@ export function MylesCorpBand() {
   );
 }
 
-function FooterColumn({ title, links }: { title: string; links: [string, string][] }) {
-  return (
-    <div>
-      <h2 className="mb-3 text-sm font-semibold text-slate-950">{title}</h2>
-      <div className="space-y-2">
-        {links.map(([label, href]) => (
-          <Link key={href} href={href} className="block text-sm text-slate-600 hover:text-slate-950">
-            {label}
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export function FloatingHomeActions() {
   return (
     <>
       <a
         href={`sms:+${phone}?body=${liveChatMessage}`}
-        className="fixed bottom-5 left-5 z-50 flex items-center gap-2 rounded-full bg-[#132033] px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/20 hover:bg-[#223551]"
+        className="fixed bottom-5 left-5 z-50 flex items-center gap-2 rounded-full bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 hover:bg-primary/90"
         aria-label="Start live chat with MylesCRM"
       >
         <Headphones className="h-4 w-4" />
@@ -424,23 +354,23 @@ export function FloatingHomeActions() {
 
 export function ProductPreview() {
   return (
-    <div className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-lg border border-slate-200 bg-white shadow-2xl shadow-slate-900/10">
-      <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-4 py-3">
+    <div className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-lg border border-border bg-card shadow-2xl shadow-primary/10">
+      <div className="flex items-center justify-between border-b border-border bg-muted/50 px-4 py-3">
         <div className="flex items-center gap-2">
           <span className="h-3 w-3 rounded-full bg-red-400" />
           <span className="h-3 w-3 rounded-full bg-amber-400" />
           <span className="h-3 w-3 rounded-full bg-emerald-400" />
         </div>
-        <span className="text-xs font-medium text-slate-500">MylesCRM Revenue Workspace</span>
+        <span className="text-xs font-medium text-muted-foreground">MylesCRM Revenue Workspace</span>
       </div>
       <div className="grid min-h-[360px] grid-cols-1 lg:grid-cols-[220px_1fr]">
-        <aside className="hidden border-r border-slate-200 bg-[#132033] p-4 text-white lg:block">
+        <aside className="hidden border-r border-border bg-muted/50 p-4 text-foreground lg:block">
           <div className="mb-6 flex items-center gap-2">
-            <Zap className="h-4 w-4 text-[#56c5b6]" />
+            <Zap className="h-4 w-4 text-primary" />
             <span className="text-sm font-semibold">MylesCRM</span>
           </div>
           {["Dashboard", "Contacts", "Pipeline", "Reports", "AI Assistant"].map((item, index) => (
-            <div key={item} className={`mb-2 rounded-md px-3 py-2 text-sm ${index === 2 ? "bg-white/12 text-white" : "text-white/55"}`}>
+            <div key={item} className={`mb-2 rounded-md px-3 py-2 text-sm ${index === 2 ? "bg-primary/15 text-foreground" : "text-muted-foreground"}`}>
               {item}
             </div>
           ))}
@@ -448,10 +378,10 @@ export function ProductPreview() {
         <div className="p-5">
           <div className="mb-5 flex flex-col justify-between gap-3 md:flex-row md:items-center">
             <div>
-              <p className="text-sm font-medium text-[#1d5fd6]">Pipeline health</p>
-              <h2 className="text-2xl font-semibold tracking-tight text-slate-950">KSh 12.8M active pipeline</h2>
+              <p className="text-sm font-medium text-primary">Pipeline health</p>
+              <h2 className="text-2xl font-semibold tracking-tight text-foreground">KSh 12.8M active pipeline</h2>
             </div>
-            <div className="rounded-md bg-emerald-50 px-3 py-2 text-sm font-semibold text-emerald-700">AI win forecast: 68%</div>
+            <div className="rounded-md bg-primary/10 px-3 py-2 text-sm font-semibold text-primary">AI win forecast: 68%</div>
           </div>
           <div className="grid gap-3 md:grid-cols-3">
             {[
@@ -459,10 +389,10 @@ export function ProductPreview() {
               ["Hot deals", "17", "KSh 4.2M"],
               ["Follow-ups due", "9", "Today"],
             ].map(([label, value, meta]) => (
-              <div key={label} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
-                <p className="text-xs font-medium uppercase text-slate-500">{label}</p>
-                <p className="mt-2 text-2xl font-semibold text-slate-950">{value}</p>
-                <p className="mt-1 text-sm text-slate-500">{meta}</p>
+              <div key={label} className="rounded-lg border border-border bg-muted/40 p-4">
+                <p className="text-xs font-medium uppercase text-muted-foreground">{label}</p>
+                <p className="mt-2 text-2xl font-semibold text-foreground">{value}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{meta}</p>
               </div>
             ))}
           </div>
@@ -473,16 +403,16 @@ export function ProductPreview() {
               ["Proposal", "12 deals", "bg-amber-500"],
               ["Closing", "7 deals", "bg-emerald-500"],
             ].map(([stage, deals, color]) => (
-              <div key={stage} className="rounded-lg border border-slate-200 bg-white p-3">
+              <div key={stage} className="rounded-lg border border-border bg-background p-3">
                 <div className="mb-3 flex items-center gap-2">
                   <span className={`h-2.5 w-2.5 rounded-full ${color}`} />
-                  <span className="text-sm font-semibold text-slate-900">{stage}</span>
+                  <span className="text-sm font-semibold text-foreground">{stage}</span>
                 </div>
-                <p className="text-xs text-slate-500">{deals}</p>
+                <p className="text-xs text-muted-foreground">{deals}</p>
                 <div className="mt-3 space-y-2">
-                  <span className="block h-12 rounded-md bg-slate-100" />
-                  <span className="block h-12 rounded-md bg-slate-100" />
-                  <span className="block h-12 rounded-md bg-slate-100 md:hidden lg:block" />
+                  <span className="block h-12 rounded-md bg-muted" />
+                  <span className="block h-12 rounded-md bg-muted" />
+                  <span className="block h-12 rounded-md bg-muted md:hidden lg:block" />
                 </div>
               </div>
             ))}
@@ -496,9 +426,9 @@ export function ProductPreview() {
 export function SectionHeader({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) {
   return (
     <div className="mx-auto mb-10 max-w-3xl text-center">
-      <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#1d5fd6]">{eyebrow}</p>
-      <h1 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 md:text-5xl">{title}</h1>
-      <p className="mt-4 text-base leading-7 text-slate-600 md:text-lg">{text}</p>
+      <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">{eyebrow}</p>
+      <h1 className="mt-3 text-3xl font-semibold tracking-tight text-foreground md:text-5xl">{title}</h1>
+      <p className="mt-4 text-base leading-7 text-muted-foreground md:text-lg">{text}</p>
     </div>
   );
 }
@@ -507,10 +437,10 @@ export function FeatureGrid() {
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {featureHighlights.map((feature) => (
-        <div key={feature.title} className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-          <feature.icon className="mb-4 h-6 w-6 text-[#1d5fd6]" />
-          <h2 className="text-lg font-semibold text-slate-950">{feature.title}</h2>
-          <p className="mt-2 text-sm leading-6 text-slate-600">{feature.text}</p>
+        <div key={feature.title} className="rounded-lg border border-border bg-card p-6 shadow-sm">
+          <feature.icon className="mb-4 h-6 w-6 text-primary" />
+          <h2 className="text-lg font-semibold text-foreground">{feature.title}</h2>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">{feature.text}</p>
         </div>
       ))}
     </div>
@@ -521,22 +451,22 @@ export function PricingGrid() {
   return (
     <div className="grid gap-5 lg:grid-cols-3">
       {plans.map((plan) => (
-        <div key={plan.name} className={`rounded-lg border bg-white p-6 shadow-sm ${plan.highlighted ? "border-[#1d5fd6] ring-2 ring-[#1d5fd6]/10" : "border-slate-200"}`}>
-          {plan.highlighted && <p className="mb-3 text-sm font-semibold text-[#1d5fd6]">Most popular</p>}
-          <h2 className="text-xl font-semibold text-slate-950">{plan.name}</h2>
-          <p className="mt-2 min-h-12 text-sm leading-6 text-slate-600">{plan.description}</p>
-          <p className="mt-5 text-4xl font-semibold tracking-tight text-slate-950">
-            {plan.price}<span className="text-base font-medium text-slate-500">/mo</span>
+        <div key={plan.name} className={`rounded-lg border bg-card p-6 shadow-sm ${plan.highlighted ? "border-primary ring-2 ring-primary/10" : "border-border"}`}>
+          {plan.highlighted && <p className="mb-3 text-sm font-semibold text-primary">Most popular</p>}
+          <h2 className="text-xl font-semibold text-foreground">{plan.name}</h2>
+          <p className="mt-2 min-h-12 text-sm leading-6 text-muted-foreground">{plan.description}</p>
+          <p className="mt-5 text-4xl font-semibold tracking-tight text-foreground">
+            {plan.price}<span className="text-base font-medium text-muted-foreground">/mo</span>
           </p>
           <ul className="mt-6 space-y-3">
             {plan.features.map((feature) => (
-              <li key={feature} className="flex items-start gap-2 text-sm text-slate-700">
+              <li key={feature} className="flex items-start gap-2 text-sm text-muted-foreground">
                 <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
                 {feature}
               </li>
             ))}
           </ul>
-          <Link href="/contact" className={`mt-6 flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-semibold ${plan.highlighted ? "bg-[#1d5fd6] text-white hover:bg-[#174fb5]" : "border border-slate-200 text-slate-900 hover:bg-slate-50"}`}>
+          <Link href="/contact" className={`mt-6 flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-semibold ${plan.highlighted ? "bg-primary text-primary-foreground hover:bg-primary/90" : "border border-border text-foreground hover:bg-muted"}`}>
             Talk to sales <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -564,18 +494,18 @@ export const useCases = [
 export const contactMethods = [
   { icon: Phone, label: "Phone and SMS", value: "+254 743 993 715", href: `tel:+${phone}` },
   { icon: MessageCircle, label: "WhatsApp", value: "Start a WhatsApp consultation", href: `https://wa.me/${phone}?text=${whatsappMessage}` },
-  { icon: Mail, label: "Email", value: "Request a CRM demo", href: "mailto:support@mylesoft.com?subject=MylesCRM%20Demo%20Request" },
+  { icon: Mail, label: "Email", value: "Request a CRM demo", href: "mailto:support@mylescorptech.com?subject=MylesCRM%20Demo%20Request" },
 ];
 
 export function CTASection() {
   return (
-    <section className="bg-[#132033] px-5 py-16 text-white lg:px-8">
+    <section className="border-y border-border bg-muted/30 px-5 py-16 text-foreground lg:px-8">
       <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-center">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#56c5b6]">Ready when your team is</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">Ready when your team is</p>
           <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">Build a cleaner sales process before the next lead slips away.</h2>
         </div>
-        <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-[#132033] hover:bg-slate-100">
+        <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
           Book a consultation <ArrowRight className="h-4 w-4" />
         </Link>
       </div>

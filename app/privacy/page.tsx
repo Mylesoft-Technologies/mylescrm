@@ -1,7 +1,7 @@
 import { MarketingShell, SectionHeader } from "@/components/marketing/site";
 
 export const metadata = {
-  title: "Privacy Policy | MylesCRM",
+  title: "Privacy Policy",
   description: "MylesCRM privacy policy for customer data, CRM records, communications, and service operations.",
 };
 
@@ -15,7 +15,7 @@ export default function PrivacyPage() {
             title="Privacy Policy"
             text="This page explains how MylesCRM, a MylesCorp Technologies product, handles business contact data, account information, communications, and operational records."
           />
-          <div className="space-y-6 rounded-lg border border-slate-200 bg-white p-8 text-sm leading-7 text-slate-600 shadow-sm">
+          <div className="space-y-6 rounded-lg border border-border bg-card p-8 text-sm leading-7 text-muted-foreground shadow-sm">
             <PolicySection title="Information we process" text="MylesCRM may process account details, CRM records, contact information, company information, sales activity, invoices, payment references, support messages, and usage data required to operate the platform." />
             <PolicySection title="How information is used" text="Information is used to provide CRM functionality, authenticate users, support customer workflows, improve product reliability, communicate with customers, and protect the service from abuse." />
             <PolicySection title="Service providers" text="MylesCRM may rely on trusted providers for hosting, authentication, email delivery, payments, analytics, and infrastructure operations. These providers are used only for service delivery and operational support." />
@@ -32,7 +32,7 @@ export default function PrivacyPage() {
 function PolicySection({ title, text }: { title: string; text: string }) {
   return (
     <section>
-      <h2 className="text-lg font-semibold text-slate-950">{title}</h2>
+      <h2 className="text-lg font-semibold text-foreground">{title}</h2>
       <p className="mt-2">{text}</p>
     </section>
   );
