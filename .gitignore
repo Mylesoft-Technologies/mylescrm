@@ -35,6 +35,10 @@ Thumbs.db
 # Vercel
 .vercel
 
+# Agent handoff
+/HANDOFF.md
+/handoff.md
+
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
